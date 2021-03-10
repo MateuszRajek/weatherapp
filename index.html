@@ -11,7 +11,27 @@
   <title>Weather APP</title>
 </head>
 <body>
-  
+  <section class="weather-info__container">
+    <div class="weather-info__search-view">
+      <h1 class="weather-info__title">Weather Info App</h1>
+      <label class="weather-info__search-location__label" for="searchLocationInput"></label>
+      <input type="text" id="searchLocationInput" placeholder="Type your location">
+      <button class="weather-info__search-location__button"></button>
+    </div>
+    <div class="weather-info__forecast-view">
+      <button class="weather-info__btn-return">Go back</button>
+      <div class="weather-info__city">
+        <h1 id="searchedCityWeather"></h1>
+        <img id="weatherIcon" src="" alt="currentWeatherIcon">
+      </div>
+      <div class="weather-info__temperatures">
+        <h2 id="currentWeatherTemp"></h2>
+        <p id="weatherMinTemp"></p>
+        <p id="weatherMaxTemp"></p>
+      </div>
+    </div>
+  </section>
+
   <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
