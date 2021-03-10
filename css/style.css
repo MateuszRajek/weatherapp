@@ -12,6 +12,10 @@ body {
 
 .weather-info__search-view {
   display: flex;
+}
+
+.weather-info__search-view, 
+.weather-info__forecast-view {
   flex-direction: column;
   align-items: center;
   height: 65%;
@@ -60,4 +64,11 @@ body {
 
 .weather-info__forecast-view {
   display: none;
+}
+ 
+.weather-info__btn-return {
+  align-self: flex-start;
+  padding: 10px 15px;
+  margin: 15px;
+  border-radius: 15px;
 }
