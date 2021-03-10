@@ -1,3 +1,63 @@
 body {
   font-family: 'Raleway', sans-serif;
+  background-image: url(https://picsum.photos/1600/1050);
+}
+
+.weather-info__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.weather-info__search-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 65%;
+  width: 70%;
+  border-radius: 30px;
+  background-color: rgba(200, 200, 200, .9);
+}
+
+.weather-info__title {
+  margin-top: 5%;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.weather-info__search-view label {
+  margin: 90px 0 10px;
+  font-size: 20px;
+}
+
+.weather-info__search-view input {
+  width: 260px;
+  margin-bottom: 30px;
+  border-color: transparent;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 150%;
+}
+
+.weather-info__search-location__button {
+  padding: 15px 20px;
+  border-radius: 15px;
+  border-color: none;
+  background-color: #008080;
+  transition: .3s;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.weather-info__search-location__button:hover {
+  background-color: #fff;
+  color: #008080;
+}
+
+
+.weather-info__forecast-view {
+  display: none;
 }
