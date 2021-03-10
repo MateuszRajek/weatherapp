@@ -1,3 +1,5 @@
+import { getWeatherByCity } from './apiService.js'
+
 const viewElements = {}
 
 const getDomElement = id => {
@@ -25,7 +27,14 @@ const setupListeners = () => {
   viewElements.searchButton.addEventListener('click', onSearchSubmit)
 }
 
-const onEnterSubmit = () => {};
+const onEnterSubmit = event => {
+  if (event.key === 'Enter') {
+    let city = viewElements.searchLocationInput.value;
+    getWeatherByCity(city).then(data => {
+      console.log(data)});
+  }
+  
+};
 const onSearchSubmit = () => {};
 
 const initializeApp = () => {
