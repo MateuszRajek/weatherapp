@@ -74,7 +74,7 @@ const displayWeatherData = data => {
   viewElements.currentWeatherTemp.innerText = `Current temperature: ${currTemp}°C`;
   viewElements.weatherMinTemp.innerText = `Min daily temperature: ${minTemp}°C`;
   viewElements.weatherMaxTemp.innerText = `Max daily temperature: ${maxTemp}°C`;
-  viewElements.windSpeed.innerText = `Max daily temperature: ${windSpeed}km/h`;
+  viewElements.windSpeed.innerText = `Wind Speed: ${windSpeed}km/h`;
 }
 
 const switchOnOffLoader = () => {
