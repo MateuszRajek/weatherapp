@@ -16,7 +16,8 @@ const connectDOMElements = () => {
   viewElements.weatherIcon = getDomElement('weatherIcon');
   viewElements.currentWeatherTemp = getDomElement('currentWeatherTemp');
   viewElements.weatherMinTemp = getDomElement('weatherMinTemp');
-  viewElements.weatherMinTemp = getDomElement('weatherMaxTemp');
+  viewElements.weatherMaxTemp = getDomElement('weatherMaxTemp');
+  viewElements.windSpeed = getDomElement('windSpeed');
 
   viewElements.searchLocationInput = getDomElement('searchLocationInput');
   viewElements.searchButton = getDomElement('searchButton');
@@ -40,23 +41,41 @@ const onEnterSubmit = event => {
     let city = viewElements.searchLocationInput.value;
     getWeatherByCity(city).then(data => {
       console.log(data)
-      setTimeout(() => {
-        switchOnOffLoader()
-      }, 2000)});
-    switchView()
-  }
+      displayWeatherData(data)
+    });
   };
+};
 
 const onSearchSubmit = event => {
   switchOnOffLoader()
   let city = viewElements.searchLocationInput.value;
   getWeatherByCity(city).then(data => {
+    displayWeatherData(data)
     console.log(data)
-    setTimeout(() => {
-      switchOnOffLoader()
-    }, 2000)});
-  switchView()
+  });
 };
+
+const displayWeatherData = data => {
+  setTimeout(() => {
+    switchOnOffLoader()
+  }, 2000);
+  switchView();
+
+  const weather = data.consolidated_weather[1]
+
+  viewElements.searchedCityWeather.textContent = data.title;
+  viewElements.weatherIcon.src = `https://www.metaweather.com/static/img/weather/${weather.weather_state_abbr}.svg`;
+
+  const currTemp = Math.round(weather.the_temp);
+  const minTemp = Math.round(weather.min_temp);
+  const maxTemp = Math.round(weather.max_temp);
+  const windSpeed = (weather.wind_speed * 1.609344).toFixed(1);
+
+  viewElements.currentWeatherTemp.innerText = `Current temperature: ${currTemp}°C`;
+  viewElements.weatherMinTemp.innerText = `Min daily temperature: ${minTemp}°C`;
+  viewElements.weatherMaxTemp.innerText = `Max daily temperature: ${maxTemp}°C`;
+  viewElements.windSpeed.innerText = `Max daily temperature: ${windSpeed}km/h`;
+}
 
 const switchOnOffLoader = () => {
   if (viewElements.mainContainer.style.display !== 'none') {
