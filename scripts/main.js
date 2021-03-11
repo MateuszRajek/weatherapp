@@ -36,12 +36,16 @@ const initializeApp = () => {
 
 const onEnterSubmit = event => {
   if (event.key === 'Enter') {
+    switchOnOffLoader()
     let city = viewElements.searchLocationInput.value;
     getWeatherByCity(city).then(data => {
-      console.log(data)});
+      console.log(data)
+      setTimeout(() => {
+        switchOnOffLoader()
+      }, 2000)});
+    switchView()
   }
-  
-};
+  };
 
 const onSearchSubmit = event => {
   switchOnOffLoader()
