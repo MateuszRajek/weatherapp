@@ -1,6 +1,7 @@
 body {
   font-family: 'Raleway', sans-serif;
   background-image: url(https://picsum.photos/1600/1050);
+  background-repeat: no-repeat;
 }
 
 .weather-info__container {
@@ -11,8 +12,18 @@ body {
   display: none;
 }
 
+.error__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+}
+
 .weather-info__container,
-.loader__container {
+.loader__container,
+.error__container {
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -24,28 +35,33 @@ body {
 
 .weather-info__search-view, 
 .weather-info__forecast-view, 
-.loader {
+.loader,
+.error__container {
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  height: 65%;
+  height: 68%;
   width: 70%;
+  padding: 5px;
   border-radius: 30px;
+  text-align: center;
   background-color: rgba(200, 200, 200, .9);
 }
 
 .weather-info__title {
-  margin-top: 5%;
+  margin-top: 3%;
   font-size: 40px;
   font-weight: 500;
 }
 
 .weather-info__search-view label {
-  margin: 90px 0 10px;
+  margin: 40px 0 10px;
   font-size: 20px;
 }
 
 .weather-info__search-view input {
   width: 260px;
+  max-width: 80%;
   margin-bottom: 30px;
   border-color: transparent;
   border-radius: 5px;
@@ -58,10 +74,10 @@ body {
   border-radius: 15px;
   border-color: none;
   background-color: #008080;
-  transition: .3s;
   color: #fff;
   font-size: 18px;
   text-transform: uppercase;
+  transition: .3s;
   cursor: pointer;
 }
 
@@ -74,11 +90,17 @@ body {
   display: none;
 }
  
-.weather-info__btn-return {
+.weather-info__btn--return {
   align-self: flex-start;
   padding: 10px 15px;
-  margin: 15px;
   border-radius: 15px;
+  cursor: pointer;
+}
+
+.weather-info__btn--return:hover {
+  background-color: #008080;
+  color: #fff;
+  transition: .3s;
 }
 
 .loader {
@@ -132,5 +154,132 @@ body {
 
   100% {
     transform: rotate(-720deg);
+  }
+}
+
+.weather-info__city {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 5px;
+}
+
+.weather-info--current-weather__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .6);
+}
+
+h2 {
+  font-size: 30px
+}
+
+.weather-info__temperatures p,
+.weather-info__temperatures h3 {
+  margin: 5px 0;
+}
+
+.weather-info__temperatures h3 {
+  font-size: 20px;
+}
+
+.weather-info__temperatures p {
+  font-size: 16px;
+}
+
+.weather-info__city img {
+  width: 75%;
+}
+
+.error__text {
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #fe0404
+}
+
+.error__container a {
+  color: black;
+  text-decoration: none;
+}
+
+.error__container p:nth-of-type(2) {
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+.error__container__btn--switch-off {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color:rgba(255, 255, 255, .6);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.error__container__btn--switch-off:hover {
+  color:rgba(255, 255, 255, .6);
+}
+
+.error__container__btn--switch-off div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateZ(45deg);
+}
+
+.error__container__btn--switch-off div:nth-of-type(2) {
+  transform: translate(-50%, -50%) rotateZ(135deg);
+}
+
+@media (max-width: 768px) {
+  .weather-info__title {
+    margin-top: 3%;
+    font-size: 35px;
+  }  
+
+  .weather-info__search-view label {
+    margin: 10px 0;
+  }
+  
+  .weather-info__search-view input {
+    margin-bottom: 10px;
+  }
+
+  .weather-info--current-weather__icon {
+    width: 75px;
+    height: 75px;
+  }
+
+  h2 {
+    font-size: 24px
+  }
+  
+  .weather-info__temperatures p,
+  .weather-info__temperatures h3 {
+    margin: 3px 0;
+  }
+  
+  .weather-info__temperatures h3 {
+    font-size: 18px;
+  }
+  
+  .weather-info__temperatures p {
+    font-size: 14px;
+  }
+
+  .error__container__btn--switch-off {
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
 }

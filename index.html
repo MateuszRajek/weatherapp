@@ -19,10 +19,12 @@
       <button class="weather-info__search-location__button" id="searchButton">Check weather</button>
     </div>
     <div class="weather-info__forecast-view" id="weatherForecastView">
-      <button class="weather-info__btn-return" id="returnButton">Check another location</button>
+      <button class="weather-info__btn--return" id="returnButton">Check another location</button>
       <div class="weather-info__city">
         <h2 id="searchedCityWeather"></h2>
-        <img id="weatherIcon" src="" alt="currentWeatherIcon">
+        <div class="weather-info--current-weather__icon">
+          <img id="weatherIcon" src="" alt="currentWeatherIcon">
+        </div>
       </div>
       <div class="weather-info__temperatures">
         <h3 id="currentWeatherTemp"></h3>
@@ -36,6 +38,20 @@
     <div class="loader">
       <div class="loader__spinner--right"><div class="loader__spinner--left"></div></div>
       <p>Loading...</p>
+    </div>
+  </section>
+  <section class="error__container" id="errorContainer">
+    <p class="error__text">city not found. </p>
+    <p>full list of cities available:</p>
+    <a href="https://www.metaweather.com/24865670/" target="-blank">Africa</a>
+    <a href="https://www.metaweather.com/24865671/" target="-blank">Asia</a>
+    <a href="https://www.metaweather.com/55949069/" target="-blank">Australia & New Zeland</a>
+    <a href="https://www.metaweather.com/24865675/" target="-blank">Europe</a>
+    <a href="https://www.metaweather.com/24865672/" target="-blank">North America</a>
+    <a href="https://www.metaweather.com/24865673/" target="-blank">South America</a>
+    <div class="error__container__btn--switch-off" id="errorSwitchOffButton">
+      <div>|</div>
+      <div>|</div>
     </div>
   </section>
 
