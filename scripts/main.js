@@ -17,6 +17,7 @@ class WeatherApp {
     this.viewElements.searchLocationInput.addEventListener('keydown', this.handleSubmit);
     this.viewElements.searchButton.addEventListener('click', this.handleSubmit);
     this.viewElements.returnButton.addEventListener('click', this.switchView);
+    this.viewElements.errorSwitchOffButton.addEventListener('click', this.switchOnOffErrorView);
   }
 
   handleSubmit = event => {
@@ -24,7 +25,12 @@ class WeatherApp {
       this.switchOnOffLoader()
     let city = this.viewElements.searchLocationInput.value;
     getWeatherByCity(city).then(data => {
-      this.displayWeatherData(data)
+      this.displayWeatherData(data);
+      this.viewElements.searchLocationInput.value = '';
+    }).catch(() => {
+      this.viewElements.searchLocationInput.value = '';
+      this.switchOnOffErrorView();
+      this.switchOnOffLoader()
     });
     }
   };
@@ -70,6 +76,15 @@ class WeatherApp {
       this.viewElements.weatherSearchView.style.display = 'flex'
       this.viewElements.weatherForecastView.style.display = 'none'
     }
+  }
+
+  switchOnOffErrorView = () => {
+    if (this.viewElements.errorContainer.style.display !== 'flex') {
+      this.viewElements.errorContainer.style.display = 'flex'
+    } else {
+      this.viewElements.errorContainer.style.display = 'none'
+    }
+    
   }
 };
 
